@@ -46,7 +46,35 @@ constraint fk_prestamo_bibliotecario
           references bibliotecario (id_bibliotecario)
           on update cascade
           on delete restrict
-          )
+);
+
+create table if not exists libro_prestamo(
+       id_libro_prestamo INT unsigned not null,
+       fk_prestamo int unsigned not null,
+       fk_isbn_libro varchar(18) not null,
+       cantidad int unsigned not null default 1,
+       primary key (id_libro_prestamo),
+       unique key uq_libro_prestamo(fk_prestamo, fk_libro_prestamo),
+       index idx_libro_prestamo_prestamo(fk_prestamo),
+       index idx_libro_prestamo_libro(fk_ibsn_libro),
+       constraint fk_libro_prestamo_prestamo
+              foreign key (fk_prestamo)
+              references prestamo(id_prestamo)
+              on update cascade
+			  on delete cascade,
+	  constraint fk_libro_prestamo_libro
+              foreign key (fk_isbn_libro)
+              references libro(isbn_libro)
+              on update cascade
+              on delete cascade
+)
+              
+       
+       
+       
+       
+
+	
            
 
 
