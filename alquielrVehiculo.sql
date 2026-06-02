@@ -1,5 +1,5 @@
-Create database if not exists alquilerVehiculos;
-USE alquilerVehiculos;
+Create database if not exists alquilerVehiculo;
+USE alquilerVehiculo;
 Create table if not exists marcaVehiculo (
        idMarca INT primary key AUTO_INCREMENT not null, 
        nombreMarca VARCHAR(100) not null
